@@ -1,8 +1,8 @@
-# Recolor — Firefox Extension Spec
+# BetterYoutubeMusic — Firefox Extension Spec
 
 ## 1. Overview
 
-**Recolor** is a Firefox extension that replaces the solid dark background of
+**BetterYoutubeMusic** is a Firefox extension that replaces the solid dark background of
 YouTube Music (`https://music.youtube.com/*`) with a mystical night-sky
 wallpaper. The app's background surfaces are made transparent so the wallpaper
 shows through behind the existing UI.
@@ -46,10 +46,10 @@ The extension must **not**:
 ### 5.1 File Structure
 
 ```
-recolor/
+betteryoutubemusic/
 ├── manifest.json
 ├── content.js
-├── recolor.css
+├── betteryoutubemusic.css
 ├── images/
 │   └── background.png
 ├── icons/
@@ -63,7 +63,7 @@ recolor/
 ```json
 {
   "manifest_version": 3,
-  "name": "Recolor",
+  "name": "BetterYoutubeMusic",
   "version": "1.0.0",
   "description": "Replaces the YouTube Music background with a night-sky wallpaper.",
   "icons": {
@@ -73,7 +73,7 @@ recolor/
   "content_scripts": [
     {
       "matches": ["https://music.youtube.com/*"],
-      "css": ["recolor.css"],
+      "css": ["betteryoutubemusic.css"],
       "js": ["content.js"],
       "run_at": "document_start"
     }
@@ -86,7 +86,7 @@ recolor/
   ],
   "browser_specific_settings": {
     "gecko": {
-      "id": "recolor@local",
+      "id": "betteryoutubemusic@local",
       "strict_min_version": "142.0",
       "data_collection_permissions": {
         "required": ["none"]
@@ -107,7 +107,7 @@ because the `moz-extension://<uuid>/` origin differs per install.
 
 ```js
 document.documentElement.style.setProperty(
-  "--recolor-bg-image",
+  "--bym-bg-image",
   `url("${browser.runtime.getURL("images/background.png")}")`
 );
 ```
@@ -115,7 +115,7 @@ document.documentElement.style.setProperty(
 It must not touch the DOM in any other way, listen to events, or talk to the
 page's scripts.
 
-### 5.4 recolor.css
+### 5.4 betteryoutubemusic.css
 
 #### 5.4.1 Wallpaper layer
 
@@ -124,7 +124,7 @@ Put the image on the root so it sits behind everything:
 ```css
 html,
 body {
-  background: #000 var(--recolor-bg-image) center / cover no-repeat fixed !important;
+  background: #000 var(--bym-bg-image) center / cover no-repeat fixed !important;
 }
 ```
 
@@ -250,7 +250,7 @@ Optional: run `npx web-ext lint` for manifest/AMO validation and
 
 ## 8. Packaging & Distribution
 
-- Build with `npx web-ext build --ignore-files spec.md` → `web-ext-artifacts/recolor-1.0.0.zip`.
+- Build with `npx web-ext build --ignore-files spec.md` → `web-ext-artifacts/betteryoutubemusic-1.0.0.zip`.
 - For permanent install outside AMO, the add-on must be signed (via AMO
   unlisted submission) or used in Firefox Developer Edition/Nightly with
   `xpinstall.signatures.required = false`.

@@ -1,11 +1,11 @@
-/* Recolor: night-sky wallpaper behind YouTube Music. Visual only. */
+/* BetterYoutubeMusic: night-sky wallpaper behind YouTube Music. Visual only. */
 
 /* Wallpaper layer (with a dim tint baked in for readability). */
 html {
   background-color: #000 !important;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-    var(--recolor-bg-image) !important;
+    var(--bym-bg-image) !important;
   background-position: center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;

@@ -1,4 +1,4 @@
 document.documentElement.style.setProperty(
-  "--recolor-bg-image",
+  "--bym-bg-image",
   `url("${browser.runtime.getURL("images/background.png")}")`
 );
